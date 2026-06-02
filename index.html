@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Método CG 2.0 — Circuito Gastronómico | Que toda Córdoba hable de tu restaurante</title>
+<meta name="description" content="El sistema de marketing gastronómico multiplataforma que hace crecer tu restaurante: más comensales, mejor posicionamiento y la comunidad de los mejores de Córdoba." />
+
+<link rel="icon" type="image/png" href="assets/img/favicon.png" />
+<link rel="apple-touch-icon" href="assets/img/favicon.png" />
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('anim');
+  }
+</script>
+
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="cur-ring" id="curRing"></div>
+<div class="cur-dot" id="curDot"></div>
+<div class="progress" id="progress"></div>
+
+<!-- ===== NAV ===== -->
+<header id="nav" class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="nav-logo" aria-label="Circuito Gastronómico"><img src="assets/img/logo-blanco.png" alt="Circuito Gastronómico" /></a>
+    <nav class="nav-links">
+      <a href="#que-es" data-cursor>El Método</a>
+      <a href="#metodo" data-cursor>Qué incluye</a>
+      <a href="#equipo" data-cursor>Quiénes somos</a>
+      <a href="#planes" data-cursor>Planes</a>
+    </nav>
+    <a href="#sumate" data-cursor class="nav-cta magnetic">Sumate</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-img reveal-img" id="heroImg">
+    <img src="assets/img/hero.jpg" alt="Mesa servida en un restaurante con plato emplatado, copas de vino y pan" />
+    <div class="hero-img-veil"></div>
+  </div>
+  <div class="hero-fx">
+    <div class="blob drift hero-blob"></div>
+  </div>
+  <div class="hero-spot" id="heroSpot"></div>
+
+  <div class="container hero-inner">
+
+
+    <h1>
+      <span class="line-wrap"><span class="line">Que toda Córdoba</span></span>
+      <span class="line-wrap"><span class="line">quiera comer en</span></span>
+      <span class="line-wrap"><span class="line">tu <span class="hero-accent">restaurante.</span></span></span>
+    </h1>
+
+    <p class="reveal hero-lead">
+      El sistema de marketing gastronómico que trabaja por vos todo el año. Más comensales, más seguidores y el lugar que tu cocina se merece.
+    </p>
+
+    <div class="reveal hero-ctas">
+      <a href="#sumate" data-cursor class="btn-primary magnetic">
+        Sumar mi restaurante
+        <span class="arrow">→</span>
+      </a>
+      <a href="#que-es" data-cursor class="btn-link magnetic">Cómo funciona</a>
+    </div>
+  </div>
+
+  <!-- ticker -->
+  <div class="marquee-wrap">
+    <div class="marquee" id="marquee"><div class="marquee-track"></div></div>
+  </div>
+</section>
+
+<!-- ===== QUÉ ES (dark) ===== -->
+<section id="que-es" class="section section-dark section-pad">
+  <div class="blob drift-2" style="width:40vw;height:40vw;left:-128px;top:80px;opacity:.18;background:radial-gradient(circle,#C62A2E,transparent 60%)"></div>
+  <div class="container" style="position:relative">
+    <p class="reveal eyebrow" style="color:var(--wine-b);margin-bottom:24px">¿Qué es el Método CG 2.0?</p>
+    <h2 class="reveal h2-display" style="max-width:none">
+      Un método <span class="grad-wine">multiplataforma</span> que hace evolucionar tu restaurante
+    </h2>
+    <p class="reveal section-lead">
+      Somos web, app, redes, radio, televisión, eventos e influencers. Cada mes ponemos esa audiencia —la más grande de la gastronomía cordobesa— a trabajar para que tu local crezca. Con un calendario, métricas y sin que muevas un dedo.
+    </p>
+    <p class="reveal section-coda">No es una agencia — es una <strong>membresía anual</strong> con acceso a todo el ecosistema.</p>
+
+    <div class="reveal feature-grid">
+      <div class="glow feature-cell">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+        <h3>Más comensales</h3>
+        <p>Audiencia gastronómica real que se convierte en gente en tu mesa.</p>
+      </div>
+      <div class="glow feature-cell">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <h3>Mejor en Google</h3>
+        <p>Optimizamos tu Perfil de Empresa para que te encuentren primero.</p>
+      </div>
+      <div class="glow feature-cell">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg></div>
+        <h3>Más seguidores</h3>
+        <p>Tu Instagram crece con contenido pro y el empuje de creadores reales.</p>
+      </div>
+      <div class="glow feature-cell">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Comunidad</h3>
+        <p>Entrás a la red de los dueños de los mejores restaurantes de la ciudad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ¿ES PARA VOS? (cream) ===== -->
+<section class="section section-cream section-pad-sm section-pain">
+  <div class="container">
+    <figure class="pain-photo">
+      <video class="pain-video"
+             autoplay
+             muted
+             playsinline
+             preload="metadata"
+             aria-label="Chef cordobés trabajando con una sartén en llamas"
+             poster="assets/img/chef-flame.jpg">
+        <source src="assets/video/pain-video.mp4" type="video/mp4" />
+      </video>
+    </figure>
+
+    <div class="pain-content">
+      <p class="reveal eyebrow pain-eyebrow">El problema real</p>
+      <h2 class="reveal h2-display cream pain-title">
+        Podés ser el mejor de Córdoba<span class="pain-title-break">Y aun así, <span class="pain-title-accent">invisible</span></span>
+      </h2>
+      <p class="reveal pain-lead">
+        La gastronomía cordobesa nunca fue tan competitiva. Sin visibilidad estratégica, el mejor plato del mundo no alcanza.
+      </p>
+
+      <ol class="pain-list" id="painList">
+        <li class="pain-item"><span class="pain-text">El marketing siempre queda para la próxima. Y nunca llega completo.</span></li>
+        <li class="pain-item"><span class="pain-text">Tu Instagram no crece. Y los que ya te siguen, no terminan reservando.</span></li>
+        <li class="pain-item"><span class="pain-text">Cocinás mejor de lo que el mundo está registrando.</span></li>
+        <li class="pain-item"><span class="pain-text">Los influencers podrían cambiarlo todo. Si supieras por dónde empezar.</span></li>
+        <li class="pain-item"><span class="pain-text">Soñás con eventos que te llenen el salón. Y no encontrás cómo armarlos.</span></li>
+      </ol>
+
+      <p class="reveal pain-outro">No te falta talento. <span class="accent">Te falta un sistema que lo muestre.</span></p>
+
+      <div class="reveal section-cta on-cream no-divider">
+        <div class="section-cta-actions">
+          <a href="#sumate" data-cursor class="btn-primary magnetic">
+            Sumarme al Método
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EL MÉTODO / QUÉ INCLUYE (dark, bento) ===== -->
+<section id="metodo" class="section section-dark section-pad">
+  <div class="blob drift" style="width:45vw;height:45vw;right:-10%;top:33%;opacity:.15;background:radial-gradient(circle,#C62A2E,transparent 60%)"></div>
+  <div class="container" style="position:relative">
+    <div class="reveal method-head">
+      <p class="eyebrow" style="color:var(--wine-b)">Todo lo que pasa cuando entrás</p>
+      <h2 class="h2-display">Un calendario de acciones, todo el año</h2>
+    </div>
+
+    <!-- BENTO -->
+    <div class="bento">
+      <div class="glow glow-line bento-card col-2 row-2">
+        <div class="bento-pad">
+          <div>
+            <p class="eyebrow bento-big-eyebrow">Medio digital</p>
+            <h3 class="bento-big-title">Apariciones garantizadas</h3>
+            <p class="bento-big-text">Ingresás a un calendario de publicaciones que te garantiza entre 10 y 22 apariciones al año en nuestra web — el medio gastronómico más relevante de Córdoba.</p>
+          </div>
+          <div class="bento-big-count">
+            <span class="num"><span data-count="22">0</span></span>
+            <span class="lbl">apariciones / año en el plan Platino</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glow bento-card bg-img col-2">
+        <img src="assets/img/fotografia.jpg" alt="Sesión de fotos profesional" class="parallax" />
+        <div class="veil"></div>
+        <div class="bento-pad">
+          <h3>Fotos y video de lujo</h3>
+          <p>Te ofrecemos una sesión de fotos y video profesional al año para elevar la presentación digital de tu local.</p>
+        </div>
+      </div>
+
+      <div class="glow glow-line bento-card bento-small">
+        <div class="bento-pad-sm">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></svg></div>
+          <div><h3>Optimización en Google</h3><p>Tu Perfil de Empresa optimizado y verificado para aparecer primero.</p></div>
+        </div>
+      </div>
+
+      <div class="glow glow-line bento-card bento-small">
+        <div class="bento-pad-sm">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h1l9 5V5L5 10H4a1 1 0 0 0-1 1Z"/><path d="M16 8a4 4 0 0 1 0 8"/><path d="M19 6a7 7 0 0 1 0 12"/></svg></div>
+          <div><h3>Redes + Influencers</h3><p>Posteos en nuestro Instagram y creadores que visitan tu local.</p></div>
+        </div>
+      </div>
+
+      <div class="glow bento-card bg-img col-2">
+        <img src="assets/img/evento.jpg" alt="Evento de la comunidad" class="parallax" style="object-position:center 20%" />
+        <div class="veil"></div>
+        <div class="bento-pad">
+          <h3>Eventos &amp; Semanas Temáticas</h3>
+          <p>Sumate gratis o con 50% off a las Semanas Temáticas. Cada acción te lleva clientes nuevos.</p>
+        </div>
+      </div>
+
+      <div class="glow glow-line bento-card bento-small">
+        <div class="bento-pad-sm">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+          <div><h3>Guía web + app</h3><p>Tu restaurante con perfil enriquecido en nuestra guía digital (Android e iOS).</p></div>
+        </div>
+      </div>
+
+      <div class="glow glow-line bento-card bento-small">
+        <div class="bento-pad-sm">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div><h3>Comunidad + capacitación</h3><p>WhatsApp con dueños, 3 capacitaciones al año y asesoramiento del equipo.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- stats -->
+    <div class="reveal stats-head">
+      <span class="stats-rule" aria-hidden="true"></span>
+      <span class="stats-eyebrow">El método en cifras</span>
+    </div>
+    <div class="reveal stats">
+      <div>
+        <div class="num"><span data-count="7">0</span></div>
+        <p>plataformas trabajando para vos</p>
+      </div>
+      <div>
+        <div class="num"><span data-count="3">0</span></div>
+        <p>capacitaciones al año</p>
+      </div>
+      <div>
+        <div class="num"><span data-count="2">0</span></div>
+        <p>visitas de creadores</p>
+      </div>
+      <div>
+        <div class="num"><span data-count="50">0</span><span class="pct">%</span></div>
+        <p>off en Semanas Temáticas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUIÉNES SOMOS (cream) — roster editorial interactivo ===== -->
+<section id="equipo" class="section section-cream section-pad-sm section-team">
+  <div class="container">
+    <div class="reveal team-intro">
+      <p class="team-eyebrow">Quiénes somos</p>
+      <h2 class="h2-display cream team-title">Un equipo experto en <span class="team-title-accent">comunicación gastronómica</span></h2>
+      <p class="team-lead">Marketing, fotografía, diseño, creación de contenidos y asesoramiento comercial. Cada disciplina al servicio del crecimiento de tu restaurante.</p>
+    </div>
+
+    <ul class="team-deck reveal" id="teamDeck">
+      <li class="deck-card is-active" data-index="0"
+          data-name="Nicolás Marchetti"
+          data-role="Dirección"
+          data-bio="Periodista gastronómico en La Voz, Cadena 3 y Canal 12. Autor de dos libros. Fundador de Circuito Gastronómico.">
+        <img src="assets/img/equipo-1.webp" alt="Nicolás Marchetti" />
+        <span class="deck-veil" aria-hidden="true"></span>
+        <span class="deck-vertical" aria-hidden="true">Nicolás Marchetti</span>
+        <div class="deck-content">
+          <span class="deck-num">01</span>
+          <h3 class="deck-name">Nicolás Marchetti</h3>
+          <p class="deck-role">Dirección</p>
+          <p class="deck-bio">Periodista gastronómico en La Voz, Cadena 3 y Canal 12. Autor de dos libros. Fundador de Circuito Gastronómico.</p>
+        </div>
+      </li>
+
+      <li class="deck-card" data-index="1">
+        <img src="assets/img/equipo-2.webp" alt="Fernando Arocena" />
+        <span class="deck-veil" aria-hidden="true"></span>
+        <span class="deck-vertical" aria-hidden="true">Fernando Arocena</span>
+        <div class="deck-content">
+          <span class="deck-num">02</span>
+          <h3 class="deck-name">Fernando Arocena</h3>
+          <p class="deck-role">Dirección</p>
+          <p class="deck-bio">Consultor en marketing. Socio de Punto a Punto y Mazalán. Fundador de Faro Marketing Labs y docente en la Universidad Siglo 21.</p>
+        </div>
+      </li>
+
+      <li class="deck-card" data-index="2">
+        <img src="assets/img/equipo-3.webp" alt="Natalia Juncos" />
+        <span class="deck-veil" aria-hidden="true"></span>
+        <span class="deck-vertical" aria-hidden="true">Natalia Juncos</span>
+        <div class="deck-content">
+          <span class="deck-num">03</span>
+          <h3 class="deck-name">Natalia Juncos</h3>
+          <p class="deck-role">Equipo comercial</p>
+          <p class="deck-bio">Acompañamiento de los restaurantes que integran el Método durante todo el año.</p>
+        </div>
+      </li>
+
+      <li class="deck-card" data-index="3">
+        <img src="assets/img/equipo-4.webp" alt="Belén Trabucco" />
+        <span class="deck-veil" aria-hidden="true"></span>
+        <span class="deck-vertical" aria-hidden="true">Belén Trabucco</span>
+        <div class="deck-content">
+          <span class="deck-num">04</span>
+          <h3 class="deck-name">Belén Trabucco</h3>
+          <p class="deck-role">Equipo comercial</p>
+          <p class="deck-bio">Coordinación de las acciones del Método y los eventos del Circuito.</p>
+        </div>
+      </li>
+
+      <li class="deck-card" data-index="4">
+        <img src="assets/img/equipo-5.webp" alt="Sergio Chazarreta" style="object-position:center 12%" />
+        <span class="deck-veil" aria-hidden="true"></span>
+        <span class="deck-vertical" aria-hidden="true">Sergio Chazarreta</span>
+        <div class="deck-content">
+          <span class="deck-num">05</span>
+          <h3 class="deck-name">Sergio Chazarreta</h3>
+          <p class="deck-role">Equipo comercial</p>
+          <p class="deck-bio">Vinculación con nuevos restaurantes y con la comunidad del Circuito.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIOS (dark) ===== -->
+<section class="section section-dark section-testimonials">
+  <div class="container testimonials-head">
+    <p class="reveal eyebrow" style="color:var(--wine-b)">Los que ya están adentro</p>
+    <h2 class="reveal h2-display testimonials-title">Lo que dicen los <span class="grad-wine">nuestros</span></h2>
+  </div>
+
+  <div class="t-marquee" id="testimonialsMarquee">
+    <div class="t-track" id="testimonialsTrack">
+      <article class="t-card">
+        <span class="t-quote-mark" aria-hidden="true">"</span>
+        <blockquote class="t-quote">Me da mucho Circuito. Me da difusión, ayuda al lugar a crecer y están cuando los necesitamos.</blockquote>
+        <figcaption class="t-author">
+          <img src="assets/img/testimonio-rodrigo.webp" alt="Rodrigo Arozamena" />
+          <div class="t-author-meta">
+            <span class="t-name">Rodrigo Arozamena</span>
+            <span class="t-place">Los Aroza</span>
+          </div>
+        </figcaption>
+      </article>
+
+      <article class="t-card">
+        <span class="t-quote-mark" aria-hidden="true">"</span>
+        <blockquote class="t-quote">Me encanta pertenecer a una comunidad y trabajar con los colegas para sumar difusión a nuestro sector todo el año.</blockquote>
+        <figcaption class="t-author">
+          <img src="assets/img/testimonio-luciana.webp" alt="Luciana Del Rosso" />
+          <div class="t-author-meta">
+            <span class="t-name">Luciana Del Rosso</span>
+            <span class="t-place">Junior B</span>
+          </div>
+        </figcaption>
+      </article>
+
+      <article class="t-card">
+        <span class="t-quote-mark" aria-hidden="true">"</span>
+        <blockquote class="t-quote">Las apariciones en la web nos llenan el local los fines de semana. Cambió el negocio.</blockquote>
+        <figcaption class="t-author">
+          <img src="assets/img/testimonio-tony.webp" alt="Tony" />
+          <div class="t-author-meta">
+            <span class="t-name">Tony</span>
+            <span class="t-place">Restaurante adherido</span>
+          </div>
+        </figcaption>
+      </article>
+
+      <article class="t-card">
+        <span class="t-quote-mark" aria-hidden="true">"</span>
+        <blockquote class="t-quote">Más que un servicio, es una comunidad. Sumar es ganar visibilidad y aliados.</blockquote>
+        <figcaption class="t-author">
+          <img src="assets/img/testimonio-marcela.webp" alt="Marcela" />
+          <div class="t-author-meta">
+            <span class="t-name">Marcela</span>
+            <span class="t-place">Restaurante adherido</span>
+          </div>
+        </figcaption>
+      </article>
+
+      <article class="t-card">
+        <span class="t-quote-mark" aria-hidden="true">"</span>
+        <blockquote class="t-quote">Empezamos solos. Hoy somos parte de la comunidad más fuerte de la gastronomía cordobesa.</blockquote>
+        <figcaption class="t-author">
+          <img src="assets/img/rodrigo.jpg" alt="Los Aroza" />
+          <div class="t-author-meta">
+            <span class="t-name">Hermanos Arozamena</span>
+            <span class="t-place">Los Aroza</span>
+          </div>
+        </figcaption>
+      </article>
+
+      <article class="t-card">
+        <span class="t-quote-mark" aria-hidden="true">"</span>
+        <blockquote class="t-quote">Antes lo hacía todo yo. Ahora puedo estar en la cocina porque hay un equipo pensando en cómo crecer.</blockquote>
+        <figcaption class="t-author">
+          <img src="assets/img/marcela.jpg" alt="Marcela" />
+          <div class="t-author-meta">
+            <span class="t-name">Marcela</span>
+            <span class="t-place">Restaurante adherido</span>
+          </div>
+        </figcaption>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLANES (cream) ===== -->
+<section id="planes" class="section section-cream section-pad-sm section-plans">
+  <div class="container">
+    <div class="reveal plans-head">
+      <p class="eyebrow plans-eyebrow">Tres formas de empezar</p>
+      <h2 class="h2-display plans-title">Elegí tu nivel de <span class="plans-title-accent">visibilidad</span></h2>
+      <p class="plans-lead">Todos los planes incluyen el Paquete Google My Business. Consultá por pagos en cuotas con tarjeta o cheques.</p>
+    </div>
+
+    <div class="plans-grid">
+      <article class="plan-card reveal">
+        <span class="plan-tag">Plata</span>
+        <h3 class="plan-name">PLATA</h3>
+        <p class="plan-sub">Para negocios que comienzan su visibilidad digital</p>
+        <div class="plan-divider" aria-hidden="true"></div>
+        <ul class="plan-features">
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>10 publicaciones web + 12 posts Instagram al año</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Perfil enriquecido en Guía de Restaurantes (web, iOS, Android)</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>50% de descuento en todas las Semanas Temáticas</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>1 persona en todas las capacitaciones anuales</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Comunidad WhatsApp de propietarios CG</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Paquete Google My Business incluido</li>
+        </ul>
+        <a href="#sumate" data-plan="Plata" data-cursor class="plan-btn magnetic">Me interesa</a>
+      </article>
+
+      <article class="plan-card plan-card--featured reveal">
+        <span class="plan-floating-badge">Más elegido</span>
+        <span class="plan-tag">Oro</span>
+        <h3 class="plan-name">ORO</h3>
+        <p class="plan-sub">Para los que están dando un salto de expansión</p>
+        <div class="plan-divider" aria-hidden="true"></div>
+        <ul class="plan-features">
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>15 publicaciones web + 15 posts Instagram al año</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>3 posteos compartidos en nuestro feed</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>1 visita de creador de contenido a tu local</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Sesión de fotos profesional</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>1 Semana Temática bonificada + 50% off en las demás</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>2 personas en todas las capacitaciones anuales</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Comunidad WhatsApp + Google My Business</li>
+        </ul>
+        <a href="#sumate" data-plan="Oro" data-cursor class="plan-btn plan-btn--filled magnetic">Quiero el Oro</a>
+      </article>
+
+      <article class="plan-card reveal">
+        <span class="plan-tag">Platino</span>
+        <h3 class="plan-name">PLATINO</h3>
+        <p class="plan-sub">Para los protagonistas de la escena gastronómica</p>
+        <div class="plan-divider" aria-hidden="true"></div>
+        <ul class="plan-features">
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>22 publicaciones web + Instagram al año (promedio)</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>5 posteos en feed + 2 visitas de creadores de contenido</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Participación en streaming @ElDoceTV</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Video + sesión de fotos de lujo</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>2 Semanas Temáticas bonificadas + 50% off en las demás</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>3 personas en capacitaciones + sesiones de asesoramiento</li>
+          <li><span class="plan-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>2 sesiones presenciales grupales de evaluación al año</li>
+        </ul>
+        <a href="#sumate" data-plan="Platino" data-cursor class="plan-btn magnetic">Quiero el Platino</a>
+      </article>
+    </div>
+
+    <p class="reveal plans-disclaimer">* El acuerdo incluye 4 vouchers anuales para sorteos en nuestras redes y medios aliados. Los vouchers no incluyen bebidas y son válidos de lunes a jueves con reserva previa. Consultá por pagos en más de 3 cuotas con tarjeta o cheques.</p>
+  </div>
+</section>
+
+<!-- ===== CTA / FORM (dark) ===== -->
+<section id="sumate" class="cta">
+  <div class="cta-bg">
+    <img src="assets/img/barista-coffee.jpg" alt="" />
+    <div class="veil"></div>
+  </div>
+  <div class="blob drift cta-blob"></div>
+  <div class="container cta-grid">
+    <div>
+      <p class="reveal eyebrow" style="color:var(--wine-b);margin-bottom:24px">Sumate al Método CG 2.0</p>
+      <h2 class="reveal">Que este sea el año de tu restaurante</h2>
+      <p class="reveal cta-text">Dejá tus datos y te contactan <strong>Natalia, Belén o Sergio</strong> para armar el plan a tu medida. Sin compromiso, sin letra chica.</p>
+    </div>
+    <form id="leadForm" class="reveal" novalidate>
+      <div class="form-grid">
+        <div class="field">
+          <label for="nombre">Tu nombre</label>
+          <input id="nombre" name="nombre" type="text" placeholder="Nombre y apellido" required />
+        </div>
+        <div class="field">
+          <label for="restaurante">Restaurante</label>
+          <input id="restaurante" name="restaurante" type="text" placeholder="Nombre del local" required />
+        </div>
+        <div class="field">
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" name="telefono" type="tel" placeholder="351 555 5555" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="vos@turestaurante.com" required />
+        </div>
+        <div class="field span-2">
+          <label for="plan">Plan de interés</label>
+          <select id="plan" name="plan">
+            <option value="">Quiero que me asesoren</option>
+            <option value="Plata">Plata — arranco ahora</option>
+            <option value="Oro">Oro — estoy creciendo</option>
+            <option value="Platino">Platino — quiero ser protagonista</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" data-cursor class="form-submit magnetic">Enviar <span class="arrow">→</span></button>
+      <p id="formMsg" class="form-msg hidden"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="assets/img/logo-blanco.png" alt="Circuito Gastronómico" />
+      <p>Los mejores restaurantes de Córdoba. Web, app, redes, radio, TV, eventos e influencers, compartiendo lo mejor de la gastronomía cordobesa.</p>
+    </div>
+    <div class="footer-nav">
+      <p class="eyebrow">Navegá</p>
+      <ul>
+        <li><a href="#que-es">El Método</a></li>
+        <li><a href="#metodo">Qué incluye</a></li>
+        <li><a href="#equipo">Quiénes somos</a></li>
+        <li><a href="#planes">Planes</a></li>
+      </ul>
+    </div>
+    <div class="footer-cta">
+      <p class="eyebrow">Sumate</p>
+      <a href="#sumate" data-cursor>Empezá hoy →</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> Circuito Gastronómico — Método CG 2.0</span>
+    <span>Córdoba, Argentina</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

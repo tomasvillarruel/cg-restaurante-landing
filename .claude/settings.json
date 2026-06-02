@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(python $s \"landing page B2B marketing service restaurant premium minimal sophisticated conversion\" --design-system -f markdown)",
+      "PowerShell($s = \"C:\\\\Users\\\\Lucila Grosso\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\")",
+      "PowerShell(python $s \"hero social-proof conversion minimal premium service\" --domain landing -n 4)",
+      "PowerShell(python $s \"whitespace visual-hierarchy animation spacing\" --domain ux -n 8)",
+      "Bash(ls \"C:\\\\Users\\\\Lucila Grosso\\\\AppData\\\\Local\\\\Temp\\\\cgshot_pptr\" 2>/dev/null; ls \"C:\\\\Users\\\\Lucila Grosso\\\\AppData\\\\Local\\\\Temp\" 2>/dev/null | head -20)",
+      "Read(//c/Users/Lucila Grosso/AppData/Local/Temp/**)",
+      "Bash(find \"C:\\\\Users\\\\Lucila Grosso\\\\Downloads\" \"C:\\\\Users\\\\Lucila Grosso\\\\Pictures\" \"C:\\\\Users\\\\Lucila Grosso\\\\Desktop\" -maxdepth 2 -type f \\\\\\( -iname \"*.jpg\" -o -iname \"*.jpeg\" -o -iname \"*.png\" -o -iname \"*.webp\" \\\\\\) -mmin -120 2>/dev/null | head -10)",
+      "Read(//c/Users/Lucila Grosso/Downloads/**)",
+      "Bash(cp \"C:\\\\Users\\\\Lucila Grosso\\\\Downloads\\\\photo-1414235077428-338989a2e8c0.jpg\" \"c:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\CGLandingcssjs\\\\assets\\\\img\\\\hero.jpg\" && ls -la \"c:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\CGLandingcssjs\\\\assets\\\\img\\\\hero.jpg\")",
+      "Bash(find \"C:\\\\Users\\\\Lucila Grosso\\\\Downloads\" \"C:\\\\Users\\\\Lucila Grosso\\\\Desktop\" -maxdepth 2 -type f \\\\\\( -iname \"*CG*\" -o -iname \"*circuito*\" -o -iname \"*logo*\" -o -iname \"*favicon*\" \\\\\\) -mmin -120 2>/dev/null)",
+      "Read(//c/Users/Lucila Grosso/Desktop/**)",
+      "Bash(cp \"C:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\descarga.png\" \"c:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\CGLandingcssjs\\\\assets\\\\img\\\\favicon.png\" && ls -la \"c:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\CGLandingcssjs\\\\assets\\\\img\\\\favicon.png\")",
+      "Bash(command -v ffmpeg)",
+      "PowerShell(Get-Command ffmpeg -ErrorAction SilentlyContinue)",
+      "PowerShell($dest = \"c:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\CGLandingcssjs\\\\assets\\\\video\"; if \\(-not \\(Test-Path $dest\\)\\) { New-Item -ItemType Directory -Path $dest -Force | Out-Null }; Copy-Item -Path \"C:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\Gen-4 Turbo - Animate this exact image with extremely subtle realistic motion_Preserve the original.mp4\" -Destination \"$dest\\\\pain-video.mp4\" -Force; Get-ChildItem $dest | Select-Object Name, @{Name='SizeMB';Expression={[math]::Round\\($_.Length/1MB,2\\)}})"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Lucila Grosso\\AppData\\Local\\Temp\\cgshot_pptr",
+      "C:\\Users\\Lucila Grosso\\Downloads",
+      "C:\\Users\\Lucila Grosso\\Desktop"
+    ]
+  }
+}
