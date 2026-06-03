@@ -1,6 +1,5 @@
 name = "cg-restaurante-landing"
 compatibility_date = "2024-01-01"
-account_id = "$CLOUDFLARE_ACCOUNT_ID"
 
 [assets]
 directory = "./"
