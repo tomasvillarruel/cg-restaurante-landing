@@ -15,11 +15,9 @@
   }
 </script>
 
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="styles.css" />
 </head>
@@ -40,8 +38,29 @@
       <a href="#planes" data-cursor>Planes</a>
     </nav>
     <a href="#sumate" data-cursor class="nav-cta magnetic">Sumate</a>
+    <button type="button" class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- ===== MENÚ MÓVIL (drawer lateral) ===== -->
+<div class="menu-overlay" id="menuOverlay" hidden></div>
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true" aria-label="Menú de navegación">
+  <div class="mobile-menu-head">
+    <a href="#top" class="mobile-menu-logo" data-menu-link aria-label="Circuito Gastronómico"><img src="assets/img/logo-blanco.png" alt="Circuito Gastronómico" /></a>
+    <button type="button" class="mobile-menu-close" id="menuClose" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu-links">
+    <a href="#que-es" data-menu-link>El Método</a>
+    <a href="#metodo" data-menu-link>Qué incluye</a>
+    <a href="#equipo" data-menu-link>Quiénes somos</a>
+    <a href="#planes" data-menu-link>Planes</a>
+  </nav>
+  <a href="#sumate" data-menu-link class="mobile-menu-cta">Sumate</a>
+</aside>
 
 <main id="top">
 
@@ -95,8 +114,6 @@
     <p class="reveal section-lead">
       Somos web, app, redes, radio, televisión, eventos e influencers. Cada mes ponemos esa audiencia —la más grande de la gastronomía cordobesa— a trabajar para que tu local crezca. Con un calendario, métricas y sin que muevas un dedo.
     </p>
-    <p class="reveal section-coda">No es una agencia — es una <strong>membresía anual</strong> con acceso a todo el ecosistema.</p>
-
     <div class="reveal feature-grid">
       <div class="glow feature-cell">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
@@ -436,7 +453,8 @@
     </div>
 
     <div class="plans-grid">
-      <article class="plan-card reveal">
+      <article class="plan-card plan-card--plata reveal">
+        <span class="plan-sheen" aria-hidden="true"></span>
         <span class="plan-tag">Plata</span>
         <h3 class="plan-name">PLATA</h3>
         <p class="plan-sub">Para negocios que comienzan su visibilidad digital</p>
@@ -453,6 +471,7 @@
       </article>
 
       <article class="plan-card plan-card--featured reveal">
+        <span class="plan-sheen" aria-hidden="true"></span>
         <span class="plan-floating-badge">Más elegido</span>
         <span class="plan-tag">Oro</span>
         <h3 class="plan-name">ORO</h3>
@@ -470,7 +489,8 @@
         <a href="#sumate" data-plan="Oro" data-cursor class="plan-btn plan-btn--filled magnetic">Quiero el Oro</a>
       </article>
 
-      <article class="plan-card reveal">
+      <article class="plan-card plan-card--platino reveal">
+        <span class="plan-sheen" aria-hidden="true"></span>
         <span class="plan-tag">Platino</span>
         <h3 class="plan-name">PLATINO</h3>
         <p class="plan-sub">Para los protagonistas de la escena gastronómica</p>

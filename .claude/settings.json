@@ -15,7 +15,20 @@
       "Bash(cp \"C:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\descarga.png\" \"c:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\CGLandingcssjs\\\\assets\\\\img\\\\favicon.png\" && ls -la \"c:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\CGLandingcssjs\\\\assets\\\\img\\\\favicon.png\")",
       "Bash(command -v ffmpeg)",
       "PowerShell(Get-Command ffmpeg -ErrorAction SilentlyContinue)",
-      "PowerShell($dest = \"c:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\CGLandingcssjs\\\\assets\\\\video\"; if \\(-not \\(Test-Path $dest\\)\\) { New-Item -ItemType Directory -Path $dest -Force | Out-Null }; Copy-Item -Path \"C:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\Gen-4 Turbo - Animate this exact image with extremely subtle realistic motion_Preserve the original.mp4\" -Destination \"$dest\\\\pain-video.mp4\" -Force; Get-ChildItem $dest | Select-Object Name, @{Name='SizeMB';Expression={[math]::Round\\($_.Length/1MB,2\\)}})"
+      "PowerShell($dest = \"c:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\CGLandingcssjs\\\\assets\\\\video\"; if \\(-not \\(Test-Path $dest\\)\\) { New-Item -ItemType Directory -Path $dest -Force | Out-Null }; Copy-Item -Path \"C:\\\\Users\\\\Lucila Grosso\\\\Desktop\\\\Gen-4 Turbo - Animate this exact image with extremely subtle realistic motion_Preserve the original.mp4\" -Destination \"$dest\\\\pain-video.mp4\" -Force; Get-ChildItem $dest | Select-Object Name, @{Name='SizeMB';Expression={[math]::Round\\($_.Length/1MB,2\\)}})",
+      "Bash(node -e \"console.log\\(require\\('puppeteer'\\)?'ok':'no'\\)\")",
+      "Bash(node plans.js)",
+      "Bash(node hover.js)",
+      "Bash(node diag.js)",
+      "Bash(node plans2.js)",
+      "Bash(node zoom.js)",
+      "Bash(node shot.js)",
+      "Bash(node mobile.js)",
+      "Bash(node menu.js)",
+      "Bash(node -e ' *)",
+      "Bash(node leads.js)",
+      "Bash(node form.js)",
+      "Bash(node team.js)"
     ],
     "additionalDirectories": [
       "C:\\Users\\Lucila Grosso\\AppData\\Local\\Temp\\cgshot_pptr",

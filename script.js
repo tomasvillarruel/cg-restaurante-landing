@@ -225,6 +225,64 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ---------- Menú móvil (drawer lateral) ---------- */
+  (function () {
+    const burger = document.getElementById('navBurger');
+    const menu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('menuOverlay');
+    const closeBtn = document.getElementById('menuClose');
+    if (!burger || !menu || !overlay) return;
+
+    let open = false;
+
+    function openMenu() {
+      if (open) return;
+      open = true;
+      overlay.hidden = false;
+      // forzar reflow para que la transición del overlay se dispare
+      void overlay.offsetWidth;
+      overlay.classList.add('open');
+      menu.classList.add('open');
+      burger.classList.add('is-open');
+      burger.setAttribute('aria-expanded', 'true');
+      menu.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('menu-open');
+      closeBtn && closeBtn.focus();
+    }
+
+    function closeMenu() {
+      if (!open) return;
+      open = false;
+      overlay.classList.remove('open');
+      menu.classList.remove('open');
+      burger.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('menu-open');
+      burger.focus();
+      // ocultar el overlay del flujo una vez terminada la animación
+      const hide = () => {
+        if (!open) overlay.hidden = true;
+        overlay.removeEventListener('transitionend', hide);
+      };
+      overlay.addEventListener('transitionend', hide);
+    }
+
+    burger.addEventListener('click', () => (open ? closeMenu() : openMenu()));
+    closeBtn && closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && open) closeMenu();
+    });
+    menu.querySelectorAll('[data-menu-link]').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+    // Si se agranda a desktop, cerrar el menú para evitar estados raros
+    window.matchMedia('(min-width:1024px)').addEventListener('change', e => {
+      if (e.matches) closeMenu();
+    });
+  })();
+
   /* ---------- Cursor + magnetic + glow + tilt ---------- */
   if (!reduce && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
     const dot = document.getElementById('curDot'),
@@ -256,13 +314,13 @@
       });
       b.addEventListener('mousemove', e => {
         const r = b.getBoundingClientRect();
-        b.style.transition = 'transform .08s ease';
-        b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.12}px,${
-          (e.clientY - r.top - r.height / 2) * 0.12
+        b.style.transition = 'transform .12s ease';
+        b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.07}px,${
+          (e.clientY - r.top - r.height / 2) * 0.07
         }px)`;
       });
       b.addEventListener('mouseleave', () => {
-        b.style.transition = 'transform .4s cubic-bezier(.2,.8,.2,1)';
+        b.style.transition = 'transform .55s cubic-bezier(.2,.8,.2,1)';
         b.style.transform = '';
       });
     });

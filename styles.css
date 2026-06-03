@@ -22,7 +22,7 @@
   --container:1240px;
 
   --font-display:'Playfair Display', Georgia, 'Times New Roman', serif;
-  --font-sans:'General Sans','Inter',system-ui,sans-serif;
+  --font-sans:'Roboto', system-ui, -apple-system, sans-serif;
 }
 
 /* ---------- Reset ---------- */
@@ -190,6 +190,124 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   transition:background-color .2s;
 }
 .nav-cta:hover{background:var(--wine-b)}
+
+/* ---------- Botón hamburguesa (solo mobile/tablet) ---------- */
+.nav-burger{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:44px;height:44px;
+  padding:0;
+  margin-left:6px;
+  cursor:pointer;
+  background:none;border:0;
+  -webkit-tap-highlight-color:transparent;
+}
+.nav-burger span{
+  display:block;
+  width:24px;height:2px;
+  margin:0 auto;
+  border-radius:2px;
+  background:var(--cream);
+  transition:transform .35s cubic-bezier(.4,0,.2,1), opacity .25s ease;
+}
+/* Estado abierto: las 3 barras se convierten en X */
+.nav-burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.is-open span:nth-child(2){opacity:0}
+.nav-burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+@media (max-width:1023px){
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .nav-inner{height:68px}
+  .nav-logo img{height:38px}
+}
+/* En pantallas muy chicas el CTA del header se oculta (está dentro del menú) */
+@media (max-width:419px){
+  .nav-inner .nav-cta{display:none}
+}
+
+/* ---------- Drawer móvil (entra desde la derecha) ---------- */
+.menu-overlay{
+  position:fixed;inset:0;z-index:140;
+  background:rgba(12,10,9,.55);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+  opacity:0;
+  transition:opacity .4s ease;
+}
+.menu-overlay.open{opacity:1}
+
+.mobile-menu{
+  position:fixed;inset:0;z-index:150;
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  padding:28px 36px calc(44px + env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,#1c1714 0%,#141110 100%);
+  box-shadow:-30px 0 80px -30px rgba(0,0,0,.7);
+  transform:translateX(100%);
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+}
+.mobile-menu.open{transform:translateX(0)}
+
+.mobile-menu-head{
+  display:flex;align-items:center;justify-content:space-between;
+  height:60px;
+  margin-bottom:24px;
+}
+.mobile-menu-logo img{height:34px;width:auto}
+.mobile-menu-close{
+  width:42px;height:42px;
+  display:grid;place-items:center;
+  border-radius:9999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--cream);
+  cursor:pointer;
+  transition:background-color .25s ease, transform .25s ease;
+}
+.mobile-menu-close:hover{background:rgba(255,255,255,.12)}
+.mobile-menu-close:active{transform:scale(.92)}
+.mobile-menu-close svg{width:20px;height:20px}
+
+.mobile-menu-links{
+  display:flex;flex-direction:column;
+  align-items:center;
+  gap:6px;
+  margin:auto 0;
+}
+.mobile-menu-links a{
+  width:100%;
+  text-align:center;
+  font-family:var(--font-sans);
+  font-size:1.15rem;
+  font-weight:500;
+  color:rgba(250,247,241,.78);
+  padding:20px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  transition:color .2s ease;
+}
+.mobile-menu-links a:hover,
+.mobile-menu-links a:active{
+  color:var(--wine-b);
+}
+.mobile-menu-cta{
+  display:inline-flex;align-items:center;justify-content:center;
+  align-self:center;
+  width:100%;max-width:300px;
+  margin-top:36px;
+  background:var(--wine);color:#fff;
+  font-weight:600;
+  padding:16px 24px;border-radius:9999px;
+  transition:background-color .25s ease;
+}
+.mobile-menu-cta:hover{background:var(--wine-b)}
+
+/* Bloqueo de scroll del fondo cuando el menú está abierto */
+body.menu-open{overflow:hidden}
 
 /* =========================================================
    HERO
@@ -459,6 +577,15 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   font-size:1.25rem;line-height:1.625;
   color:var(--slate);
   max-width:42rem;
+}
+
+/* Mobile: las bajadas de los títulos a 18px (en vez de 20px) */
+@media (max-width:767px){
+  .hero-lead,
+  .pain-lead,
+  .pain-outro{
+    font-size:18px;
+  }
 }
 
 /* ---------- Lista numerada editorial ---------- */
@@ -825,10 +952,10 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   width:100%;
   display:grid;
   gap:8px;
-  height:560px;
+  height:700px;
   /* Mobile: vertical strip, primer card expandido */
   grid-template-columns:1fr;
-  grid-template-rows:5fr 1fr 1fr 1fr 1fr;
+  grid-template-rows:4.2fr 1.6fr 1.6fr 1.6fr 1.6fr;
   transition:grid-template-columns .65s cubic-bezier(.4,0,.2,1),
              grid-template-rows .65s cubic-bezier(.4,0,.2,1);
   user-select:none;
@@ -874,6 +1001,14 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   transform:scale(1);
 }
 
+/* Mobile: en las cintas colapsadas, mejor encuadre del rostro */
+@media (max-width:767px){
+  .deck-card:not(.is-active) img{
+    object-position:center 22%;
+    transform:scale(1);
+  }
+}
+
 .deck-veil{
   position:absolute;
   inset:0;
@@ -886,27 +1021,37 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   );
 }
 
-/* Nombre rotado vertical — visible solo cuando inactivo en desktop */
+/* Nombre del integrante en las cards inactivas.
+   Mobile: horizontal, abajo (las cintas son anchas y bajas).
+   Desktop (≥768px): rotado vertical (las cintas son altas y finas). */
 .deck-vertical{
-  display:none;
   position:absolute;
-  left:22px;
-  bottom:22px;
+  left:20px;
+  bottom:18px;
+  right:20px;
   font-family:var(--font-display);
   font-style:italic;
   font-weight:500;
-  font-size:.95rem;
+  font-size:1.05rem;
   letter-spacing:.01em;
-  color:rgba(255,255,255,.88);
+  color:#fff;
   white-space:nowrap;
-  transform-origin:left bottom;
-  transform:rotate(-90deg) translateX(0);
-  transition:opacity .4s ease;
+  text-shadow:0 1px 10px rgba(0,0,0,.6);
+  transition:opacity .35s ease;
   pointer-events:none;
 }
+.deck-card.is-active .deck-vertical{opacity:0}
 @media (min-width:768px){
-  .deck-card .deck-vertical{display:block;opacity:1}
-  .deck-card.is-active .deck-vertical{opacity:0}
+  .deck-vertical{
+    right:auto;
+    left:22px;
+    bottom:22px;
+    font-size:.95rem;
+    color:rgba(255,255,255,.88);
+    text-shadow:none;
+    transform-origin:left bottom;
+    transform:rotate(-90deg);
+  }
 }
 
 /* Content overlay (active state) */
@@ -1158,7 +1303,25 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
 /* =========================================================
    PLANES — Fondo cream + cards oscuras + featured wine
    ========================================================= */
-.section-plans{position:relative}
+.section-plans{
+  position:relative;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 8%, rgba(156,30,33,.05) 0%, transparent 60%),
+    linear-gradient(180deg, #f3f1ec 0%, #ecebe6 45%, #f3f1ec 100%);
+  overflow:hidden;
+}
+/* Veladura metálica de fondo: bandas plata/platino muy tenues */
+.section-plans::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 40% 60% at 12% 30%, rgba(170,178,196,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 55% at 88% 70%, rgba(190,192,196,.16) 0%, transparent 60%);
+  pointer-events:none;
+  z-index:0;
+}
+.section-plans .container{position:relative;z-index:1}
 
 .plans-head{
   text-align:center;
@@ -1207,28 +1370,75 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   }
 }
 
-/* ---------- Card base (dark) ---------- */
+/* ---------- Card base (metálica clara) ---------- */
 .plan-card{
   position:relative;
-  background:var(--night-2);
+  overflow:hidden;
+  background:#fff;
   border-radius:24px;
   padding:36px 28px 32px;
   display:flex;
   flex-direction:column;
-  color:#fff;
-  box-shadow:0 20px 50px -28px rgba(20,17,16,.35);
+  color:var(--ink);
+  box-shadow:0 24px 60px -28px rgba(20,17,16,.28);
   transition:
     transform .55s cubic-bezier(.2,.7,.2,1),
-    box-shadow .55s ease;
+    box-shadow .55s ease,
+    border-color .55s ease;
   will-change:transform;
 }
 @media (min-width:768px){.plan-card{padding:40px 32px 36px}}
 
-/* Hover: lift suave + sombra reforzada (solo en desktop con puntero fino) */
+
+/* El contenido textual va sobre las veladuras decorativas (::before) */
+.plan-card .plan-tag,
+.plan-card .plan-name,
+.plan-card .plan-sub,
+.plan-card .plan-divider,
+.plan-card .plan-features,
+.plan-card .plan-btn{
+  position:relative;
+  z-index:2;
+}
+
+/* Hover: glow/resplandor en el borde. El contorno de la card emite
+   un brillo del color del metal que late suavemente.
+   No mueve la card ni cambia su estética (color/layout intactos). */
+.plan-sheen{display:none}
+
 @media (hover:hover) and (pointer:fine){
   .plan-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 45px 80px -28px rgba(20,17,16,.55);
+    animation:plan-border-glow 2.2s ease-in-out infinite;
+  }
+}
+@keyframes plan-border-glow{
+  0%,100%{
+    box-shadow:0 24px 60px -28px rgba(20,17,16,.28),
+               0 0 0 1px var(--glow, rgba(255,255,255,.4)),
+               0 0 10px 1px var(--glow, rgba(255,255,255,.35));
+  }
+  50%{
+    box-shadow:0 24px 60px -28px rgba(20,17,16,.28),
+               0 0 0 1.5px var(--glow, rgba(255,255,255,.7)),
+               0 0 26px 4px var(--glow, rgba(255,255,255,.6));
+  }
+}
+/* La featured conserva su sombra vino + suma el glow del borde */
+@media (hover:hover) and (pointer:fine){
+  .plan-card--featured:hover{
+    animation:plan-border-glow-featured 2.2s ease-in-out infinite;
+  }
+}
+@keyframes plan-border-glow-featured{
+  0%,100%{
+    box-shadow:0 40px 90px -24px rgba(140,20,24,.7),
+               0 0 0 1px var(--glow),
+               0 0 14px 2px var(--glow);
+  }
+  50%{
+    box-shadow:0 40px 90px -24px rgba(140,20,24,.7),
+               0 0 0 1.5px var(--glow),
+               0 0 30px 5px var(--glow);
   }
 }
 
@@ -1236,9 +1446,7 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
 .plan-tag{
   display:inline-block;
   width:max-content;
-  background:rgba(255,255,255,.08);
-  color:#fff;
-  font-weight:600;
+  font-weight:700;
   text-transform:uppercase;
   letter-spacing:.22em;
   font-size:.62rem;
@@ -1254,13 +1462,13 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   font-size:2.1rem;
   line-height:1;
   letter-spacing:-0.02em;
-  color:#fff;
+  color:var(--ink);
   margin:0 0 12px;
 }
 @media (min-width:1024px){.plan-name{font-size:2.3rem}}
 
 .plan-sub{
-  color:rgba(255,255,255,.72);
+  color:var(--slate);
   font-size:.92rem;
   line-height:1.5;
   margin:0 0 28px;
@@ -1269,7 +1477,7 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
 
 .plan-divider{
   height:1px;
-  background:rgba(255,255,255,.12);
+  background:var(--line);
   margin:0 0 26px;
 }
 
@@ -1289,17 +1497,16 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   align-items:flex-start;
   font-size:.9rem;
   line-height:1.45;
-  color:rgba(255,255,255,.88);
+  color:var(--slate);
 }
 @media (min-width:1024px){.plan-features li{font-size:.92rem}}
 
-/* Check icon (círculo wine con ✓ blanco) */
+/* Check icon */
 .plan-check{
   flex-shrink:0;
   width:18px;
   height:18px;
   border-radius:9999px;
-  background:var(--wine);
   display:grid;
   place-items:center;
   color:#fff;
@@ -1315,24 +1522,28 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   justify-content:center;
   padding:13px 24px;
   border-radius:9999px;
-  border:1px solid rgba(255,255,255,.22);
+  border:1px solid var(--line);
   background:transparent;
-  color:#fff;
-  font-weight:500;
+  color:var(--ink);
+  font-weight:600;
   font-size:.95rem;
   text-decoration:none;
   cursor:pointer;
   transition:background-color .35s ease, border-color .35s ease, color .35s ease;
 }
 .plan-btn:hover{
-  background:rgba(255,255,255,.08);
-  border-color:rgba(255,255,255,.55);
+  background:rgba(20,17,16,.04);
+  border-color:rgba(20,17,16,.4);
 }
 
 /* ---------- Featured card (wine) — protagonista visual ---------- */
 .plan-card--featured{
-  background:var(--wine);
-  box-shadow:0 40px 80px -28px rgba(156,30,33,.55);
+  --glow:rgba(255,180,150,.85);
+  overflow:visible;
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 0%, rgba(255,255,255,.15) 0%, transparent 60%),
+    linear-gradient(155deg, #d63034 0%, var(--wine) 45%, #681214 100%);
+  box-shadow:0 40px 90px -24px rgba(140,20,24,.7), 0 0 80px -30px rgba(198,42,46,.3);
   padding:40px 30px 36px;
 }
 @media (min-width:768px){
@@ -1349,21 +1560,28 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   }
 }
 
-/* Hover del featured: combina lift con su scale base */
+/* Hover del featured: brillo de profundidad, conservando su scale base */
 @media (hover:hover) and (pointer:fine) and (min-width:1024px){
   .plan-card--featured:hover{
-    transform:scale(1.04) translateY(-8px);
-    box-shadow:0 55px 100px -32px rgba(156,30,33,.7);
+    transform:scale(1.04) translateY(-22px);
   }
 }
 @media (hover:hover) and (pointer:fine){
   .plan-card--featured:hover{
-    box-shadow:0 55px 100px -32px rgba(156,30,33,.7);
+    box-shadow:
+      0 24px 36px -18px rgba(140,20,24,.45),
+      0 90px 150px -40px rgba(140,20,24,.7),
+      0 0 100px -30px rgba(198,42,46,.4);
   }
 }
 
+.plan-card--featured .plan-name{
+  color:#fff;
+}
 .plan-card--featured .plan-tag{
   background:rgba(255,255,255,.18);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.28);
 }
 .plan-card--featured .plan-sub{
   color:rgba(255,255,255,.88);
@@ -1379,23 +1597,23 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   color:var(--wine);
 }
 
-/* Floating "Más elegido" badge sobre la featured */
+/* Floating "Más elegido" badge — chico, centrado, sobresaliendo */
 .plan-floating-badge{
   position:absolute;
-  top:-14px;
+  top:-16px;
   left:50%;
   transform:translateX(-50%);
-  background:#fff;
+  background:linear-gradient(90deg,#fff 0%,#fdf0ee 100%);
   color:var(--wine);
   font-weight:700;
   text-transform:uppercase;
-  letter-spacing:.22em;
-  font-size:.6rem;
-  padding:7px 16px;
+  letter-spacing:.16em;
+  font-size:.72rem;
+  padding:9px 22px;
   border-radius:9999px;
   white-space:nowrap;
-  box-shadow:0 8px 20px -8px rgba(20,17,16,.35);
-  z-index:3;
+  box-shadow:0 8px 22px -6px rgba(140,20,24,.45), 0 2px 6px -4px rgba(20,17,16,.2);
+  z-index:5;
 }
 
 /* Button featured (white pill con wine text) */
@@ -1409,6 +1627,132 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   background:var(--cream);
   border-color:var(--cream);
   color:var(--wine);
+}
+
+/* =========================================================
+   PLATA — fondo GRIS metálico, texto oscuro, borde y
+   acentos plateados. Etiqueta "Ag".
+   ========================================================= */
+.plan-card--plata{
+  --glow:rgba(210,216,226,.85);
+  border:1px solid transparent;
+  background:
+    linear-gradient(165deg, #3a3d42 0%, #2b2d31 55%, #323439 100%) padding-box,
+    linear-gradient(120deg, #8a8d92 0%, #e8eaed 24%, #797c81 50%, #d6d8db 76%, #93969b 100%) border-box;
+  background-clip:padding-box, border-box;
+  color:#e8e9eb;
+  box-shadow:0 26px 64px -28px rgba(12,13,16,.7);
+}
+.plan-card--plata::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:160px;
+  background:radial-gradient(ellipse 78% 100% at 50% -5%, rgba(200,205,215,.16) 0%, transparent 72%);
+  pointer-events:none;
+  z-index:0;
+}
+.plan-card--plata .plan-name{
+  background:linear-gradient(135deg,#e2e4e7 0%,#fbfcfd 45%,#c6c8cc 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.plan-card--plata .plan-sub{color:rgba(220,222,226,.62)}
+.plan-card--plata .plan-features li{color:rgba(226,228,232,.88)}
+.plan-card--plata .plan-tag{
+  background:rgba(220,224,230,.1);
+  color:#dcdee2;
+  border:1px solid rgba(190,194,200,.3);
+}
+.plan-card--plata .plan-check{
+  background:linear-gradient(140deg,#d2d4d8 0%,#9a9da2 100%);
+  color:#2b2d31;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.55);
+}
+.plan-card--plata .plan-divider{
+  background:linear-gradient(90deg, transparent, rgba(200,205,215,.28) 30%, rgba(200,205,215,.28) 70%, transparent);
+}
+.plan-card--plata .plan-btn{
+  border-color:rgba(200,205,215,.4);
+  color:#dcdee2;
+}
+.plan-card--plata .plan-btn:hover{
+  background:rgba(220,224,230,.1);
+  border-color:rgba(210,215,225,.7);
+  color:#fff;
+}
+
+/* =========================================================
+   PLATINO — fondo NEGRO premium, acentos platino frío
+   y luminoso. El tope de gama. Etiqueta "Pt".
+   ========================================================= */
+.plan-card--platino{
+  --glow:rgba(165,190,238,.9);
+  border:1px solid transparent;
+  background:
+    linear-gradient(165deg, #1a1c20 0%, #0c0d0f 100%) padding-box,
+    linear-gradient(120deg, #6d7587 0%, #d4dae6 24%, #5a6273 50%, #c2c9d6 76%, #7a8294 100%) border-box;
+  background-clip:padding-box, border-box;
+  color:#eef0f4;
+  box-shadow:
+    0 30px 75px -28px rgba(6,7,10,.85),
+    0 0 60px -30px rgba(150,165,200,.18);
+}
+.plan-card--platino::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:180px;
+  background:radial-gradient(ellipse 80% 100% at 50% -8%, rgba(160,178,215,.22) 0%, rgba(150,165,200,.06) 48%, transparent 75%);
+  pointer-events:none;
+  z-index:0;
+}
+.plan-card--platino .plan-tag{
+  background:rgba(200,210,230,.1);
+  color:#dce2ee;
+  border:1px solid rgba(180,195,225,.3);
+}
+.plan-card--platino .plan-name{
+  background:linear-gradient(135deg, #c8cfde 0%, #f4f6fa 38%, #9aa4ba 70%, #d6dceb 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  font-size:2.5rem;
+}
+@media (min-width:1024px){
+  .plan-card--platino .plan-name{font-size:2.7rem}
+}
+.plan-card--platino .plan-sub{
+  color:rgba(210,218,232,.62);
+}
+.plan-card--platino .plan-divider{
+  background:linear-gradient(90deg, transparent, rgba(180,195,225,.28) 30%, rgba(180,195,225,.28) 70%, transparent);
+}
+.plan-card--platino .plan-check{
+  background:linear-gradient(140deg,#d0d6e2 0%,#8e98ad 100%);
+  color:#1a1c20;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.6);
+}
+.plan-card--platino .plan-features li{
+  color:rgba(228,232,240,.9);
+}
+.plan-card--platino .plan-btn{
+  border-color:rgba(190,200,225,.4);
+  color:#dce2ee;
+  font-weight:600;
+}
+.plan-card--platino .plan-btn:hover{
+  background:rgba(200,210,230,.1);
+  border-color:rgba(200,212,238,.75);
+  color:#fff;
+}
+@media (hover:hover) and (pointer:fine){
+  .plan-card--platino:hover{
+    box-shadow:
+      0 56px 105px -32px rgba(6,7,10,.9),
+      0 0 80px -28px rgba(160,178,218,.25);
+  }
 }
 
 /* Disclaimer */
@@ -1484,9 +1828,9 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
 
 .form-submit{
   margin-top:36px;width:100%;
-  display:inline-flex;align-items:center;justify-content:center;gap:12px;
-  background:var(--wine);color:#fff;font-size:1rem;font-weight:500;
-  padding:16px 32px;border-radius:9999px;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--wine);color:#fff;font-size:.95rem;font-weight:500;
+  padding:11px 30px;border-radius:9999px;
   transition:background-color .2s;
   box-shadow:0 20px 60px -20px rgba(198,42,46,.9);
 }
@@ -1494,7 +1838,7 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
 .form-submit:hover{background:var(--wine-b)}
 .form-submit .arrow{
   display:grid;place-items:center;
-  width:32px;height:32px;border-radius:9999px;background:rgba(255,255,255,.15);
+  width:26px;height:26px;border-radius:9999px;background:rgba(255,255,255,.15);
 }
 
 .form-msg{margin-top:20px;font-size:.875rem}
