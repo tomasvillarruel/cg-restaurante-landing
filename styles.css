@@ -34,8 +34,10 @@ body{
   color:var(--cream);
   background:var(--night);
   -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
   overflow-x:hidden;
-  line-height:1.5;
+  line-height:1.65;
+  font-size:16px;
 }
 img,svg{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -380,11 +382,12 @@ body.menu-open{overflow:hidden}
 
 .hero h1{
   font-family:var(--font-display);
-  letter-spacing:-0.035em;
-  color:#fff;font-weight:700;line-height:.98;
-  font-size:clamp(2.7rem,7vw,6rem);
+  letter-spacing:-0.03em;
+  color:#fff;font-weight:700;line-height:1.05;
+  font-size:clamp(2.4rem,6.5vw,6rem);
   max-width:64rem;
   text-shadow:0 2px 20px rgba(0,0,0,.6), 0 1px 3px rgba(0,0,0,.5);
+  text-rendering:optimizeLegibility;
 }
 .hero-accent{
   color:var(--wine-b);
@@ -392,12 +395,12 @@ body.menu-open{overflow:hidden}
 }
 .hero-lead{
   margin-top:32px;
-  font-size:1.125rem;line-height:1.625;
+  font-size:1.125rem;line-height:1.75;
   color:rgba(250,247,241,.92);
   max-width:36rem;
   text-shadow:0 1px 12px rgba(0,0,0,.7);
 }
-@media (min-width:768px){.hero-lead{font-size:1.25rem}}
+@media (min-width:768px){.hero-lead{font-size:1.25rem;line-height:1.7}}
 
 .hero-ctas{
   margin-top:36px;
@@ -447,12 +450,12 @@ body.menu-open{overflow:hidden}
   font-style:italic;
   font-weight:500;
   font-size:1.1rem;
-  line-height:1.4;
+  line-height:1.6;
   letter-spacing:-0.005em;
   color:var(--warm-d);
   max-width:44rem;
 }
-@media (min-width:1024px){.section-coda{font-size:1.25rem;margin-top:22px}}
+@media (min-width:1024px){.section-coda{font-size:1.25rem;margin-top:22px;line-height:1.6}}
 
 .section-coda strong{
   color:var(--wine-b);
@@ -517,17 +520,18 @@ body.menu-open{overflow:hidden}
 
 .h2-display{
   font-family:var(--font-display);
-  letter-spacing:-0.035em;
-  color:#fff;font-weight:700;line-height:1.15;
-  font-size:45px;
+  letter-spacing:-0.03em;
+  color:#fff;font-weight:700;line-height:1.12;
+  font-size:clamp(2rem,4.5vw,45px);
   max-width:64rem;
+  text-rendering:optimizeLegibility;
 }
-.h2-display.cream{color:var(--ink);letter-spacing:-0.02em;line-height:1.06}
+.h2-display.cream{color:var(--ink);letter-spacing:-0.02em;line-height:1.1}
 
 .section-lead{
   margin-top:32px;
-  font-size:18px;line-height:1.6;
-  color:rgba(250,247,241,.7);
+  font-size:clamp(1rem,1.4vw,1.125rem);line-height:1.75;
+  color:rgba(250,247,241,.78);
   max-width:56rem;
 }
 
@@ -549,7 +553,7 @@ body.menu-open{overflow:hidden}
 }
 .feature-cell p{
   margin-top:8px;color:var(--warm-d);
-  font-size:.95rem;line-height:1.625;
+  font-size:1rem;line-height:1.7;
 }
 
 /* =========================================================
@@ -569,22 +573,23 @@ body.menu-open{overflow:hidden}
    ========================================================= */
 .section-pain{position:relative;overflow:visible}
 .pain-eyebrow{color:var(--wine);margin-bottom:24px}
-.pain-title{max-width:48rem;font-size:45px;line-height:1.15}
+.pain-title{max-width:48rem;font-size:clamp(2rem,4.5vw,45px);line-height:1.12;text-rendering:optimizeLegibility}
 .pain-title-accent{color:var(--wine)}
 .pain-title-break{display:block;margin-top:.08em}
 .pain-lead{
   margin-top:32px;
-  font-size:1.25rem;line-height:1.625;
+  font-size:1.125rem;line-height:1.75;
   color:var(--slate);
   max-width:42rem;
 }
 
-/* Mobile: las bajadas de los títulos a 18px (en vez de 20px) */
+/* Mobile: bajadas a 17px mínimo para mantener legibilidad */
 @media (max-width:767px){
   .hero-lead,
   .pain-lead,
   .pain-outro{
-    font-size:18px;
+    font-size:1.0625rem;
+    line-height:1.75;
   }
 }
 
@@ -630,8 +635,8 @@ body.menu-open{overflow:hidden}
 }
 .pain-item .pain-text{
   font-family:var(--font-sans);
-  font-size:.92rem;
-  line-height:1.5;
+  font-size:1rem;
+  line-height:1.7;
   color:var(--ink);
   font-weight:400;
 }
@@ -645,7 +650,7 @@ body.menu-open{overflow:hidden}
   }
   .pain-item::before{font-size:1.4rem}
   .pain-item::after{left:42px;height:22px}
-  .pain-item .pain-text{font-size:.95rem;line-height:1.5}
+  .pain-item .pain-text{font-size:1rem;line-height:1.7}
 }
 @media (min-width:1024px){
   .pain-item{
@@ -655,7 +660,7 @@ body.menu-open{overflow:hidden}
   }
   .pain-item::before{font-size:1.5rem}
   .pain-item::after{left:44px;height:22px}
-  .pain-item .pain-text{font-size:.98rem;max-width:42rem}
+  .pain-item .pain-text{font-size:1.0125rem;max-width:42rem}
 }
 
 /* Subtle hover: el numeral cambia ligeramente al pasar el cursor */
@@ -782,7 +787,7 @@ body.menu-open{overflow:hidden}
 @media (min-width:1024px){.bento-big-title{font-size:1.875rem}}
 .bento-big-text{
   color:var(--warm-d);margin-top:12px;
-  max-width:24rem;line-height:1.625;
+  max-width:24rem;line-height:1.7;font-size:1rem;
 }
 .bento-big-count{
   display:flex;align-items:flex-end;gap:8px;
@@ -806,10 +811,10 @@ body.menu-open{overflow:hidden}
 }
 .bento-card.bg-img .bento-pad{position:relative;justify-content:flex-end;padding:28px}
 .bento-card.bg-img h3{font-size:1.25rem}
-.bento-card.bg-img p{color:rgba(250,247,241,.7);font-size:.875rem;margin-top:4px}
+.bento-card.bg-img p{color:rgba(250,247,241,.7);font-size:.9rem;line-height:1.6;margin-top:4px}
 
 .bento-small h3{font-size:1rem}
-.bento-small p{color:var(--warm-d);font-size:.875rem;margin-top:4px}
+.bento-small p{color:var(--warm-d);font-size:.9rem;line-height:1.6;margin-top:4px}
 
 /* Header editorial sobre el bloque de stats — hairline + eyebrow */
 .stats-head{
@@ -935,13 +940,13 @@ body.menu-open{overflow:hidden}
 .team-title-accent{color:var(--wine);font-style:italic}
 .team-lead{
   margin-top:22px;
-  font-size:1.05rem;
-  line-height:1.6;
+  font-size:1.0625rem;
+  line-height:1.75;
   color:var(--slate);
   max-width:44rem;
 }
 @media (min-width:1024px){
-  .team-lead{font-size:1.12rem;margin-top:28px}
+  .team-lead{font-size:1.125rem;margin-top:28px;line-height:1.75}
 }
 
 /* ---------- Team deck (expanding cards strip) ---------- */
@@ -1125,13 +1130,13 @@ body.menu-open{overflow:hidden}
 }
 
 .deck-bio{
-  font-size:.9rem;
-  line-height:1.55;
-  color:rgba(255,255,255,.86);
+  font-size:.9375rem;
+  line-height:1.65;
+  color:rgba(255,255,255,.9);
   max-width:32rem;
   margin:0;
 }
-@media (min-width:1024px){.deck-bio{font-size:.95rem}}
+@media (min-width:1024px){.deck-bio{font-size:1rem;line-height:1.65}}
 
 /* Focus visible para accesibilidad keyboard */
 .deck-card:focus-visible{
@@ -1242,17 +1247,17 @@ body.menu-open{overflow:hidden}
 .t-card:hover .t-quote-mark{color:rgba(198,42,46,.75)}
 
 .t-quote{
-  font-family:var(--font-display);
-  font-style:italic;
-  font-weight:500;
-  font-size:1.05rem;
-  line-height:1.5;
-  letter-spacing:-0.005em;
-  color:rgba(255,255,255,.94);
+  font-family:var(--font-sans);
+  font-style:normal;
+  font-weight:400;
+  font-size:.9375rem;
+  line-height:1.65;
+  letter-spacing:0;
+  color:rgba(255,255,255,.96);
   margin:0;
   flex:1;
 }
-@media (min-width:1024px){.t-quote{font-size:1.15rem;line-height:1.55}}
+@media (min-width:1024px){.t-quote{font-size:1rem;line-height:1.65}}
 
 .t-author{
   display:flex;
@@ -1282,16 +1287,16 @@ body.menu-open{overflow:hidden}
   font-family:var(--font-display);
   font-style:italic;
   font-weight:500;
-  font-size:1rem;
+  font-size:1.05rem;
   color:#fff;
   letter-spacing:-0.005em;
-  line-height:1.1;
+  line-height:1.15;
 }
 .t-place{
   font-weight:600;
   text-transform:uppercase;
-  letter-spacing:.18em;
-  font-size:.6rem;
+  letter-spacing:.16em;
+  font-size:.65rem;
   color:var(--warm-d);
 }
 
@@ -1343,11 +1348,11 @@ body.menu-open{overflow:hidden}
 .plans-lead{
   color:var(--slate);
   font-size:1rem;
-  line-height:1.6;
+  line-height:1.75;
   max-width:42rem;
   margin:0 auto;
 }
-@media (min-width:768px){.plans-lead{font-size:1.05rem}}
+@media (min-width:768px){.plans-lead{font-size:1.0625rem}}
 
 /* Grid */
 .plans-grid{
