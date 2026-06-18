@@ -112,37 +112,22 @@
         }),
     });
 
-    /* Roster cards — entrada escalonada + pulse de borde + hover GSAP */
+    /* Roster cards — entrada escalonada + hover GSAP */
     (function () {
       const items = gsap.utils.toArray('#rosterGrid .roster-item');
       if (!items.length) return;
 
       const shadowBase  = '0 2px 14px rgba(20,17,16,.06)';
       const shadowHover = '0 10px 32px rgba(20,17,16,.13), 0 0 0 0.5px #9C1E21';
-      const shadowPulse = '0 4px 20px rgba(156,30,33,.18), 0 0 0 1px #C62A2E';
 
       ScrollTrigger.create({
         trigger: '#rosterGrid',
         start: 'top 85%',
         once: true,
-        onEnter: () => {
-          const tl = gsap.timeline();
-          // 1 — entrada escalonada (igual que pain list)
-          tl.to(items, {
-            opacity: 1, y: 0,
-            duration: 0.55, stagger: 0.08, ease: 'power2.out',
-          })
-          // 2 — pulse de borde vino uno por uno
-          .to(items, {
-            boxShadow: shadowPulse,
-            duration: 0.22, stagger: 0.07, ease: 'power2.in',
-          }, '-=0.1')
-          // 3 — vuelve al estado base
-          .to(items, {
-            boxShadow: shadowBase,
-            duration: 0.45, stagger: 0.07, ease: 'power3.out',
-          });
-        },
+        onEnter: () => gsap.to(items, {
+          opacity: 1, y: 0,
+          duration: 0.55, stagger: 0.08, ease: 'power2.out',
+        }),
       });
 
       // Hover: GSAP anima box-shadow y lift
@@ -164,6 +149,17 @@
         });
       }
     })();
+
+    /* Bento cards — entrada escalonada */
+    ScrollTrigger.create({
+      trigger: '.bento',
+      start: 'top 85%',
+      once: true,
+      onEnter: () => gsap.to('.bento .bento-card', {
+        opacity: 1, y: 0,
+        duration: 0.55, stagger: 0.09, ease: 'power2.out',
+      }),
+    });
 
     /* Pain video: vuelve al primer frame cuando termina + auto-replay al re-entrar al viewport */
     (function () {

@@ -674,6 +674,7 @@ body.menu-open{overflow:hidden}
 /* Entrance: cada item arranca oculto y entra escalonado por GSAP */
 .anim .pain-item{opacity:0;transform:translateY(20px)}
 .anim .roster-item{opacity:0;transform:translateY(24px)}
+.anim .bento-card{opacity:0;transform:translateY(28px)}
 
 /* Outro con más aire después del list */
 .pain-outro{margin-top:56px!important}
