@@ -748,7 +748,11 @@ body.menu-open{overflow:hidden}
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:16px;
-  grid-auto-rows:200px;
+  grid-auto-rows:minmax(200px,auto);
+}
+@media (max-width:767px){
+  .bento-pad,.bento-pad-sm{padding:20px}
+  .bento-small h3{font-size:.9375rem}
 }
 @media (min-width:1024px){.bento{grid-template-columns:repeat(4,1fr)}}
 
@@ -969,7 +973,7 @@ body.menu-open{overflow:hidden}
   top:0;left:0;
   width:100%;height:100%;
   object-fit:cover;
-  object-position:center 12%;
+  object-position:center 18%;
   display:block;
   transition:transform .8s cubic-bezier(.2,.7,.2,1);
   z-index:0;
@@ -1024,7 +1028,13 @@ body.menu-open{overflow:hidden}
 }
 @media (max-width:767px){
   .dir-grid{grid-template-columns:1fr}
-  .dir-card{min-height:320px}
+  .dir-card{
+    aspect-ratio:3/4;   /* portrait: cara arriba, texto abajo */
+    min-height:unset;
+  }
+  .dir-card__bio{display:none}  /* ocultar bio para no tapar la cara */
+  .dir-card__body{padding:20px 20px 24px}
+  .dir-card__name{font-size:1.5rem}
 }
 
 /* ---------- Roster — cards con categoría vino + nombres ---------- */
@@ -1854,11 +1864,20 @@ body.menu-open{overflow:hidden}
 
 .footer-bottom{
   padding-bottom:40px;
-  display:flex;flex-direction:column;gap:12px;
-  justify-content:space-between;
-  font-size:.875rem;color:rgba(250,247,241,.3);
+  display:flex;
+  justify-content:center;
+  font-size:.875rem;
+  color:rgba(250,247,241,.3);
+  border-top:1px solid rgba(250,247,241,.1);
+  padding-top:24px;
 }
-@media (min-width:640px){.footer-bottom{flex-direction:row}}
+.footer-eon{
+  color:rgba(250,247,241,.55);
+  font-weight:600;
+  text-decoration:none;
+  transition:color .2s ease;
+}
+.footer-eon:hover{color:rgba(250,247,241,.9)}
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
