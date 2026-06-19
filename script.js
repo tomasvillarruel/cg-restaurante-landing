@@ -112,13 +112,10 @@
         }),
     });
 
-    /* Roster cards — entrada escalonada + hover GSAP */
+    /* Team disciplines — entrada escalonada */
     (function () {
-      const items = gsap.utils.toArray('#rosterGrid .roster-item');
+      const items = gsap.utils.toArray('#rosterGrid .team-disc-item');
       if (!items.length) return;
-
-      const shadowBase  = '0 2px 14px rgba(20,17,16,.06)';
-      const shadowHover = '0 10px 32px rgba(20,17,16,.13), 0 0 0 0.5px #9C1E21';
 
       ScrollTrigger.create({
         trigger: '#rosterGrid',
@@ -126,28 +123,9 @@
         once: true,
         onEnter: () => gsap.to(items, {
           opacity: 1, y: 0,
-          duration: 0.55, stagger: 0.08, ease: 'power2.out',
+          duration: 0.5, stagger: 0.07, ease: 'power2.out',
         }),
       });
-
-      // Hover: GSAP anima box-shadow y lift
-      const isHover = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
-      if (isHover) {
-        items.forEach(card => {
-          card.addEventListener('mouseenter', () => {
-            gsap.to(card, {
-              boxShadow: shadowHover, y: -4,
-              duration: 0.28, ease: 'power2.out', overwrite: true,
-            });
-          });
-          card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-              boxShadow: shadowBase, y: 0,
-              duration: 0.5, ease: 'power3.out', overwrite: true,
-            });
-          });
-        });
-      }
     })();
 
     /* Bento cards — entrada escalonada */

@@ -129,6 +129,7 @@ h1,h2,h3,h4,h5,h6,p,figure,blockquote{margin:0}
   pointer-events:none;opacity:0;transition:opacity .45s;
   background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%), rgba(198,42,46,.6), transparent 60%);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
   -webkit-mask-composite:xor;mask-composite:exclude;
 }
 .glow-line:hover::after{opacity:1}
@@ -673,7 +674,7 @@ body.menu-open{overflow:hidden}
 
 /* Entrance: cada item arranca oculto y entra escalonado por GSAP */
 .anim .pain-item{opacity:0;transform:translateY(20px)}
-.anim .roster-item{opacity:0;transform:translateY(24px)}
+/* team-disc-item removed — replaced by deck-card */
 .anim .bento-card{opacity:0;transform:translateY(28px)}
 
 /* Outro con más aire después del list */
@@ -910,14 +911,10 @@ body.menu-open{overflow:hidden}
 @media (min-width:1024px){.stats p{font-size:1rem;margin-top:10px}}
 
 /* =========================================================
-   EQUIPO — Showcase con hover bidireccional foto ↔ nombre
-   Grid staggered de fotos a la izquierda + lista a la derecha.
-   Adaptado al lenguaje editorial: italic Playfair, numerales,
-   sepia warm dimmed en estado base, color al activar.
+   EQUIPO — sección dark con cards de foto + deck interactivo
    ========================================================= */
 .section-team{
   position:relative;
-  /* Override del section-pad-sm global para compactar esta sección */
   padding-block:88px;
 }
 @media (min-width:1024px){
@@ -939,8 +936,10 @@ body.menu-open{overflow:hidden}
   color:var(--wine);
   margin-bottom:24px;
 }
+.team-title{color:var(--ink)}
 .team-title-accent{color:var(--wine);font-style:italic}
 .team-lead{
+  font-family:var(--font-sans);
   margin-top:22px;
   font-size:1.0625rem;
   line-height:1.75;
@@ -948,177 +947,155 @@ body.menu-open{overflow:hidden}
   max-width:44rem;
 }
 @media (min-width:1024px){
-  .team-lead{font-size:1.125rem;margin-top:28px;line-height:1.75}
-}
-/* ---------- Team roster (discipline cards) ---------- */
-.team-roster{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-  margin-bottom:56px;
-}
-.roster-item{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:28px 28px 32px;
-  box-shadow:0 2px 14px rgba(20,17,16,.06);
-  will-change:transform, box-shadow;
-}
-.roster-cat{
-  font-family:var(--font-sans);
-  font-size:.68rem;
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:.24em;
-  color:var(--wine);
-  margin:0 0 14px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.roster-cat::before{
-  content:'';
-  display:inline-block;
-  width:16px;
-  height:2px;
-  background:var(--wine);
-  border-radius:9999px;
-  flex-shrink:0;
-}
-.roster-names{
-  font-family:var(--font-display);
-  font-size:1.05rem;
-  font-weight:600;
-  color:var(--ink);
-  line-height:1.625;
-  margin:0;
-}
-@media (max-width:767px){
-  .team-roster{grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:40px}
-  .roster-item{padding:20px 20px 24px}
-}
-@media (max-width:499px){
-  .team-roster{grid-template-columns:1fr;gap:8px;margin-bottom:32px}
+  .team-lead{font-size:1.125rem;margin-top:28px}
 }
 
-/* ---------- Dirección heading ---------- */
-.team-direction-head{
-  display:flex;
-  align-items:center;
-  gap:20px;
-  padding:40px 0 0;
-  margin-bottom:24px;
-}
-.team-direction-rule{
-  flex:1;
-  height:1px;
-  background:var(--line);
-}
-
-/* ---------- Director portrait cards (bento bg-img style) ---------- */
-.directors-grid{
+/* ---------- Director cards — foto de fondo con overlay ---------- */
+.dir-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:16px;
+  margin-bottom:48px;
 }
-.director-card{
+.dir-card{
   position:relative;
-  border-radius:24px;
+  border-radius:20px;
   overflow:hidden;
-  min-height:420px;
-  background:var(--ink);
-  box-shadow:0 20px 52px -18px rgba(20,17,16,.3);
+  aspect-ratio:4/3;
+  cursor:default;
 }
-.director-card img{
+.dir-card__photo{
   position:absolute;
-  inset:0;
+  top:0;left:0;
   width:100%;height:100%;
   object-fit:cover;
-  object-position:center 15%;
-  opacity:.78;
-  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+  object-position:center 12%;
+  display:block;
+  transition:transform .8s cubic-bezier(.2,.7,.2,1);
+  z-index:0;
 }
-.director-card:hover img{
-  opacity:.92;
+.dir-card:hover .dir-card__photo{
   transform:scale(1.05);
 }
-.director-veil{
+.dir-card__veil{
   position:absolute;
   inset:0;
-  background:linear-gradient(to top,
-    var(--night) 0%,
-    rgba(20,17,16,.55) 42%,
-    transparent 72%
+  background:linear-gradient(
+    to top,
+    rgba(12,10,10,.96) 0%,
+    rgba(12,10,10,.52) 40%,
+    rgba(12,10,10,.08) 68%,
+    transparent 100%
   );
   pointer-events:none;
+  z-index:1;
 }
-.director-info{
+.dir-card__body{
   position:absolute;
   bottom:0;left:0;right:0;
-  padding:32px;
+  padding:28px 32px 32px;
+  z-index:2;
 }
-.director-info-num{
-  font-family:var(--font-display);
-  font-style:italic;
-  font-weight:500;
-  font-size:.85rem;
-  color:var(--wine-b);
-  display:inline-block;
-  position:relative;
-  padding-right:22px;
-  margin-bottom:10px;
-  letter-spacing:.03em;
-}
-.director-info-num::after{
-  content:'';
-  position:absolute;
-  right:0;top:50%;
-  width:14px;height:1px;
-  background:var(--wine-b);
-  transform:translateY(-50%);
-}
-.director-info-name{
+.dir-card__name{
   font-family:var(--font-display);
   font-style:italic;
   font-weight:500;
   font-size:1.75rem;
-  line-height:1.1;
-  letter-spacing:-0.015em;
   color:#fff;
-  margin:0 0 6px;
+  line-height:1.15;
+  margin:0 0 10px;
+  letter-spacing:-.01em;
 }
-@media (min-width:768px){.director-info-name{font-size:2rem}}
-.director-info-role{
+.dir-card__role{
+  font-family:var(--font-sans);
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--wine-b);
+  margin:0 0 14px;
+}
+.dir-card__bio{
+  font-family:var(--font-sans);
+  font-size:.9rem;
+  line-height:1.65;
+  color:rgba(255,255,255,.75);
+  margin:0;
+}
+@media (max-width:767px){
+  .dir-grid{grid-template-columns:1fr}
+  .dir-card{min-height:320px}
+}
+
+/* ---------- Roster — cards con categoría vino + nombres ---------- */
+.dir-label{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  font-family:var(--font-sans);
+  font-size:.65rem;
   font-weight:600;
   text-transform:uppercase;
   letter-spacing:.22em;
-  font-size:.65rem;
-  color:rgba(255,255,255,.7);
-  margin:0 0 14px;
+  color:var(--wine);
+  margin:0 0 16px;
 }
-.director-info-bio{
-  font-size:.875rem;
-  line-height:1.6;
-  color:rgba(255,255,255,.82);
+.dir-label::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background:var(--line);
+}
+.team-roster{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-bottom:48px;
+}
+.roster-item{
+  background:#fff;
+  border-radius:16px;
+  padding:24px 28px 28px;
+  box-shadow:0 2px 14px rgba(20,17,16,.07);
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  border:1px solid transparent;
+}
+.roster-item:hover{
+  transform:translateY(-4.5px);
+  box-shadow:0 10px 32px rgba(156,30,33,.15);
+  border-color:var(--wine);
+}
+.roster-cat{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--font-sans);
+  font-size:.62rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  color:var(--wine);
+  margin:0 0 16px;
+}
+.roster-cat::before{
+  content:'—';
+  font-weight:400;
+  letter-spacing:0;
+  flex-shrink:0;
+}
+.roster-names{
+  font-family:var(--font-sans);
+  font-size:.95rem;
+  font-weight:400;
+  color:var(--ink);
+  line-height:1.75;
   margin:0;
 }
-@media (min-width:600px) and (max-width:899px){
-  .director-card{min-height:360px}
-  .director-info{padding:20px 24px}
-  .director-info-num{margin-bottom:5px}
-  .director-info-name{font-size:1.35rem;margin-bottom:4px}
-  .director-info-role{font-size:.6rem;margin:0 0 8px}
-  .director-info-bio{font-size:.8rem;line-height:1.5}
+@media (max-width:767px){
+  .team-roster{grid-template-columns:repeat(2,1fr)}
 }
-@media (max-width:599px){
-  .directors-grid{grid-template-columns:1fr;gap:12px}
-  .director-card{min-height:280px}
-  .director-info{padding:20px}
-  .director-info-num{margin-bottom:4px}
-  .director-info-name{font-size:1.15rem;margin-bottom:3px}
-  .director-info-role{font-size:.58rem;margin:0 0 8px}
-  .director-info-bio{font-size:.78rem;line-height:1.5}
+@media (max-width:499px){
+  .team-roster{grid-template-columns:1fr}
 }
 
 /* =========================================================
